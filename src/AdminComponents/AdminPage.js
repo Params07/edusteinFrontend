@@ -10,7 +10,7 @@ function AdminPage() {
     const fetchNavItems = async () => {
      
       try {
-        const response = await fetch('/nav-items', {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/nav-items`, {
           method: 'GET',
           credentials: 'include' 
         });

@@ -7,7 +7,8 @@ const Login = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+ 
+ 
   useEffect(() => {
     if (isAuthenticated) {
         console.log(isAuthenticated)
@@ -17,7 +18,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('/login', {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

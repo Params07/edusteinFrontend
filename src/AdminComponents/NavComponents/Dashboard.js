@@ -21,7 +21,7 @@ const Dashboard = () => {
   const [bootcamps,setBootcamp] = useState([]);
   const [options,setOptions] = useState({});
   const [bootcampoption,setBootCampoption] = useState([]);
-  const { data:bootcampData } = useGet('/bootcamps/bootcamp?id=0');
+  const { data:bootcampData } = useGet(`${process.env.REACT_APP_BACKEND_URL}/bootcamps/bootcamp?id=0`);
   const [chartData,setChartData] = useState([]);
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
@@ -71,9 +71,9 @@ useEffect(() => {
       return { ChartDatasurl: null, registrationUrl: null, Piechartdataurl: null };
     }
   
-    const chartDataUrl = `/dashboard/chartData?id=${bootcampoption.value === 'all' ? 'all' : bootcampoption.value}&start_date=${dayjs(startDate).utc().format('YYYY-MM-DD')}&end_date=${dayjs(endDate).utc().format('YYYY-MM-DD')}`;
-    const registrationUrl = `/dashboard/registration?id=${bootcampoption.value === 'all' ? 'all' : bootcampoption.value}&start_date=${dayjs(startDate).utc().format('YYYY-MM-DD')}&end_date=${dayjs(endDate).utc().format('YYYY-MM-DD')}`;
-    const Piechartdataurl = `/dashboard/piechartdata?start_date=${dayjs(startDate).utc().format('YYYY-MM-DD')}&end_date=${dayjs(endDate).utc().format('YYYY-MM-DD')}`;
+    const chartDataUrl = `${process.env.REACT_APP_BACKEND_URL}/dashboard/chartData?id=${bootcampoption.value === 'all' ? 'all' : bootcampoption.value}&start_date=${dayjs(startDate).utc().format('YYYY-MM-DD')}&end_date=${dayjs(endDate).utc().format('YYYY-MM-DD')}`;
+    const registrationUrl = `${process.env.REACT_APP_BACKEND_URL}/dashboard/registration?id=${bootcampoption.value === 'all' ? 'all' : bootcampoption.value}&start_date=${dayjs(startDate).utc().format('YYYY-MM-DD')}&end_date=${dayjs(endDate).utc().format('YYYY-MM-DD')}`;
+    const Piechartdataurl = `${process.env.REACT_APP_BACKEND_URL}/dashboard/piechartdata?start_date=${dayjs(startDate).utc().format('YYYY-MM-DD')}&end_date=${dayjs(endDate).utc().format('YYYY-MM-DD')}`;
     
     return { ChartDatasurl: chartDataUrl, registrationUrl, Piechartdataurl };
   }, [bootcampoption, startDate, endDate]);

@@ -8,7 +8,7 @@ const Logout = () => {
   useEffect(()=>{
      const logOut = async()=>{
       try {
-        const response = await fetch('/logout', {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/logout`, {
           method: 'POST',
          
           credentials: 'include', 

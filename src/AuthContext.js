@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await fetch('/admin', {
+        const response = await fetch(`${process.env.BACKEND_URL}/admin`, {
           method: 'GET',
           credentials: 'include',
         });

@@ -9,7 +9,7 @@ import { useState } from 'react';
 const AddBootcamp = () => {
     
    let data = {};
-   const { post, loading, error } = usePost('/bootcamps/addBootcamp');
+   const { post, loading, error } = usePost(`${process.env.REACT_APP_BACKEND_URL}/bootcamps/addBootcamp`);
 
    const addBootCamp = async (formData) => {
      try {

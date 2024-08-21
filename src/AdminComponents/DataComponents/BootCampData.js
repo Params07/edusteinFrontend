@@ -4,7 +4,7 @@ import useGet from '../Hooks/Get';
 
 const useBootCampData = (bootcampId) => {
   const [bootcampData, setBootcampData] = useState(null);
-  const url = bootcampId !== 0 ? `/bootcamps/bootcamp?id=${bootcampId}` : null;
+  const url = bootcampId !== 0 ? `${process.env.REACT_APP_BACKEND_URL}/bootcamps/bootcamp?id=${bootcampId}` : null;
   const { fetchData, data, loading, error } = useGet(url);
 
   useEffect(() => {

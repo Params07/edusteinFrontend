@@ -8,7 +8,7 @@ import Register from "../NavComponents/Register";
 const ActiveBootcamps = () => {
   const [displayCard, setDisplayCard] = useState(true);
   const [id, setId] = useState(0);
-  const { fetchData, data, loading, error } = useGet("/data/bootcamp");
+  const { fetchData, data, loading, error } = useGet(`${process.env.REACT_APP_BACKEND_URL}/data/bootcamp`);
   const [d1,setd1] = useState();
 
   useEffect(() => {

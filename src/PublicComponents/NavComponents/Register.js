@@ -9,8 +9,8 @@ import Payment from "../../Hooks/Payment";
 
 const Register = () => {
     const { showRegisterForm, closeRegisterForm, bootcampId, setBootcampId } = useContext(GlobalStateContext);
-    const { fetchData, data } = useGet('/data/bootcampOption');
-    const { post: checkRegister } = UsePost('/data/registerCheck');
+    const { fetchData, data } = useGet(`${process.env.REACT_APP_BACKEND_URL}/data/bootcampOption`);
+    const { post: checkRegister } = UsePost(`${process.env.REACT_APP_BACKEND_URL}/data/registerCheck`);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');

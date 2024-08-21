@@ -4,7 +4,7 @@ import { IoClose } from 'react-icons/io5';
 import useGet from '../Hooks/Get';
 
 const View = ({id,action}) => {
-  const url = useMemo(() => `/bootcamps/bootcamp?id=${id}`, [id]); 
+  const url = useMemo(() => `${process.env.REACT_APP_BACKEND_URL}/bootcamps/bootcamp?id=${id}`, [id]); 
 
   const { data: bootcampData, loading, error } = useGet(url);
   return (

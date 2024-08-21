@@ -10,7 +10,7 @@ const EmailDrafter = ({ emails, onClose,showPopup }) => {
   const [files, setFiles] = useState([]);
   const [isSending, setIsSending] = useState(false);
   const [errors,setErrors]=useState({})
-  const { post, loading, error } = usePost('/send-email');
+  const { post, loading, error } = usePost(`${process.env.REACT_APP_BACKEND_URL}/send-email`);
 
   const handleFilesChange = (e) => {
     setFiles(Array.from(e.target.files));

@@ -8,10 +8,10 @@ import useGet from '../Hooks/Get';
 
 const Edit = ({ id, action }) => {
   console.log(id)
-  const url = useMemo(() => `/bootcamps/bootcamp?id=${id}`, [id]); 
+  const url = useMemo(() => `${process.env.REACT_APP_BACKEND_URL}/bootcamps/bootcamp?id=${id}`, [id]); 
 
   const { data: bootcampData, loading, error } = useGet(url);
-  const { post } = usePost('/bootcamps/updateBootcamp');
+  const { post } = usePost(`${process.env.REACT_APP_BACKEND_URL}/bootcamps/updateBootcamp`);
 
   const check = async (alteredData) => {
     

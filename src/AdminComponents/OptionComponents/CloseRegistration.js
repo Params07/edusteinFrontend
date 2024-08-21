@@ -2,7 +2,7 @@ import React from 'react'
 import { showPopup } from '../../Components/Notification';
 import usePost from '../Hooks/UsePost';
 const CloseRegistration = ({id,action}) => {
-    const {post,error} = usePost('/bootcamps/closeRegistration');
+    const {post,error} = usePost(`${process.env.REACT_APP_BACKEND_URL}/bootcamps/closeRegistration`);
     const closeregistration = async()=>{
      
       try{

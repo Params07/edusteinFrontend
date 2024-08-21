@@ -3,7 +3,7 @@ import usePost from '../Hooks/UsePost'
 import { showPopup } from '../../Components/Notification';
 
 const Delete = ({id,action}) => {
-   const {post,error} = usePost('/bootcamps/deleteBootcamp');
+   const {post,error} = usePost(`${process.env.REACT_APP_BACKEND_URL}/bootcamps/deleteBootcamp`);
    const deleteBootcamp = async()=>{
     
      try{

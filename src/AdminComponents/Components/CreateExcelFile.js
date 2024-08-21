@@ -9,7 +9,7 @@ const useCreateExcelFile = (filename) => {
         try {
             setDownloading(true);
 
-            const response = await axios.post('/createExcel', data, {
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/createExcel`, data, {
                 responseType: 'blob',
             });
 

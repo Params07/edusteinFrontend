@@ -13,7 +13,7 @@ function loadScript(src) {
 async function displayRazorpay(registerData, onSuccess, onFailure) {
     try {
         
-        const { data } = await axios.post(`/payment/orders?id=${registerData.bootcampId}`);
+        const { data } = await axios.post(`${process.env.BACKEND_URL}/payment/orders?id=${registerData.bootcampId}`);
 
         if (!data || !data.id) {
             onFailure("Failed to create order. Please try again later.");
@@ -26,7 +26,7 @@ async function displayRazorpay(registerData, onSuccess, onFailure) {
         if (amount === 0) {
             try {
                 
-                const result = await axios.post(`/payment/freeRegistration`, {
+                const result = await axios.post(`${process.env.BACKEND_URL}/payment/freeRegistration`, {
                     ...registerData,
                    payment_id:null
                 });

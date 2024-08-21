@@ -10,7 +10,7 @@ const MyBootCamp = () => {
   const [currentComponent, setCurrentComponent] = useState(null);
   const [currentId, setCurrentId] = useState(null);
   
-  const url = '/bootcamps/bootcamp?id=0'
+  const url = `${process.env.REACT_APP_BACKEND_URL}/bootcamps/bootcamp?id=0`
   const { data: bootcampData = [], fetchData } = useGet(url); 
   
   const [registrationStatusMap, setRegistrationStatusMap] = useState({});
