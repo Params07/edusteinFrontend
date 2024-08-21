@@ -13,7 +13,7 @@ function loadScript(src) {
 async function displayRazorpay(registerData, onSuccess, onFailure) {
     try {
         
-        const { data } = await axios.post(`${process.env.BACKEND_URL}/payment/orders?id=${registerData.bootcampId}`);
+        const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/payment/orders?id=${registerData.bootcampId}`);
 
         if (!data || !data.id) {
             onFailure("Failed to create order. Please try again later.");
@@ -26,7 +26,7 @@ async function displayRazorpay(registerData, onSuccess, onFailure) {
         if (amount === 0) {
             try {
                 
-                const result = await axios.post(`${process.env.BACKEND_URL}/payment/freeRegistration`, {
+                const result = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/payment/freeRegistration`, {
                     ...registerData,
                    payment_id:null
                 });
@@ -48,7 +48,7 @@ async function displayRazorpay(registerData, onSuccess, onFailure) {
         }
 
         const options = {
-            key: 'rzp_test_Ljo5RTY9V75z4u', 
+            key:process.env.REACT_APP_RAZORPAY_KEY, 
             amount: amount.toString(),
             currency: currency,
             name: "Your Company Name", 
@@ -64,7 +64,7 @@ async function displayRazorpay(registerData, onSuccess, onFailure) {
                 };
 
                 try {
-                    const result = await axios.post(`/payment/success`, data);
+                    const result = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/payment/success`, data);
                     onSuccess(result);
                 } catch (error) {
                     console.error("Error verifying payment:", error);
