@@ -28,6 +28,7 @@ const Login = () => {
       });
 
       if (response.ok) {
+        console.log('Login successful:', response);
         login();
         navigate('/adminPage');
       } else {

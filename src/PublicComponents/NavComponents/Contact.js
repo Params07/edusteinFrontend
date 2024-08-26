@@ -13,10 +13,13 @@ const Contact = () => {
                     </span>
                 </div>
                 <div className="flex flex-col 2xl:w-48  sm:max-w-sm w-full">
-                <button className=" py-2 border-2 sm:border-4 border-line hover:text-line hover:bg-white 
-                 bg-line text-white font-bold rounded-full 3    text-base md:text-xl md:py-3   w-full ">
-                        Contact
-                    </button>
+                <a
+                 href="mailto:edustein.in@gmail.com"
+                 className="py-2 border-2 sm:border-4 border-line hover:text-line hover:bg-white bg-line text-white font-bold rounded-full text-base md:text-xl md:py-3 w-full text-center"
+>
+  Contact
+</a>
+
                     
                 </div>
             </div>
@@ -50,15 +53,27 @@ const Contact = () => {
         <span className="font-redhat text-[44544A] font-semibold md:text-xl lg:text-xl">Ready to learn from industry experts? Our IT professionals are here to guide you and shape your future career. Join us today and experience visual learning!</span>
       </div>
       <div className="pt-4 self-start flex space-x-6 sm:space-x-8 justify-start lg:justify-end items-start lg:items-end h-12 lg:h-24 w-full">
-        <div>
-          <img className="w-8 h-8 cursor-pointer " src="/images/linkedin.png" alt="LinkedIn" />
-        </div>
-        <div>
-          <img className="w-8 h-8  cursor-pointer" src="/images/instagram.png" alt="Instagram" />
-        </div>
-        <div>
-          <img className="w-8 h-8  cursor-pointer" src="/images/twitter.png" alt="Twitter" />
-        </div>
+      <div>
+  <a href="https://www.linkedin.com/company/edustein/" target="_blank" rel="noopener noreferrer">
+    <img className="w-8 h-8 cursor-pointer" src="/images/linkedin.png" alt="LinkedIn" />
+  </a>
+</div>
+<div>
+  <a href="https://www.instagram.com/p/C9j-Q1xJaRh/?igsh=M2Q4Z2dkaHQ3YXBx" target="_blank" rel="noopener noreferrer">
+    <img className="w-8 h-8 cursor-pointer" src="/images/instagram.png" alt="Instagram" />
+  </a>
+</div>
+<div>
+  <a href="https://www.facebook.com/people/EduStein/61562700015867/?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer">
+    <img className="w-8 h-8 cursor-pointer" src="/images/facebook.png" alt="Facebook" />
+  </a>
+</div>
+<div>
+  <a href="https://www.whatsapp.com/channel/0029Vak2oDAJ3jurKTir8x1a" target="_blank" rel="noopener noreferrer">
+    <img className="w-8 h-8 cursor-pointer" src="/images/whatsapp.png" alt="WhatsApp" />
+  </a>
+</div>
+
       </div>
     </div>
   </div>

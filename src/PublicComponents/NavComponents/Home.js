@@ -1,9 +1,10 @@
-import React from "react";
+import React,{useContext} from "react";
 import { FaArrowRight } from "react-icons/fa";
-
+import { GlobalStateContext } from "../UseContextComponents/GlobalStateProvider";
 function Home() {
  
-  
+  const { openRegisterForm } = useContext(GlobalStateContext);
+
   return (
     <div
       id="home"
@@ -29,17 +30,10 @@ function Home() {
             Join us to navigate your future with confidence!
           </span>
         </div>
-        <div className="p-2 bg-white max-w-96 md:max-w-80 min-w-max w-72 md:w-96 h-12 md:h-20 rounded-l-full rounded-r-full flex items-center">
-          <div className="text-center space-x-6 w-full flex items-center">
-            <span className="font-redhat font-semibold md:font-bold text-2xl text-navItems flex-grow text-center">
-              Be an EduStein
-            </span>
-            <span className="ml-auto bg-line rounded-full h-10 w-10 md:h-14 md:w-14 text-2xl font-semibold grid place-items-center cursor-pointer">
-              
-                <FaArrowRight />
-             
-            </span>
-          </div>
+        <div className="bg-white max-w-96 md:max-w-80 min-w-max w-72 md:w-96 h-12 md:h-20 rounded-l-full rounded-r-full flex items-center">
+        <button className="bg-line font-bold text-xl md:text-2xl text-white w-full h-full hover:bg-white hover:text-line border-2 border-line rounded-full" onClick={() => openRegisterForm()}>
+                Register
+              </button>
         </div>
       </div>
       <div className="w-full lg:w-[40%] flex items-center justify-center p-4 md:p-0">

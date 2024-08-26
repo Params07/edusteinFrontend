@@ -8,6 +8,7 @@ import axios from 'axios';
 import useGet from '../Hooks/Get';
 import useCreateExcelFile from '../Components/CreateExcelFile';
 
+
 const Registration = () => {
   const [options, setOptions] = useState([]);
   const [bootcamp, setBootCamp] = useState(null);
@@ -101,6 +102,7 @@ const Registration = () => {
         </button>
             </div>
         )}
+       
       </div>
      {
       registrationsData &&  <DynamicTable

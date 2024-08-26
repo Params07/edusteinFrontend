@@ -167,3 +167,11 @@ input[name="name"]:focus ~ .name {
 
 
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none; 
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  
+  scrollbar-width: none; 
+}

@@ -10,6 +10,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { TbMoneybag } from "react-icons/tb";
 import { FaUserFriends } from "react-icons/fa";
 import MyPieChart from '../Components/MyPieChart';
+import { FaChartPie } from "react-icons/fa";
+
 dayjs.extend(utc);
 
 
@@ -26,8 +28,17 @@ const Dashboard = () => {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [filterOption,setFilterOption] = useState();
+  const [bootcampStatus,setBootcampStatus]= useState();
+  const statusBootcamp = [{
+    label:'Active',value:'active'
+  }
+  ,
+  {
+    label:'InActive',value:'inactive'
+  }
+]
   const filters = [{
-      label:'Today',value:'Today'
+      label:'Today',value:'Today'  
   },{
     label:'Last week',value:'Last week'
 },{
@@ -35,6 +46,7 @@ const Dashboard = () => {
 }]
 useEffect(()=>{
  setFilterOption(filters[0])
+ setBootcampStatus(statusBootcamp[0])
 },[])
 useEffect(() => {
   const currentDate = dayjs().utc().toDate();
@@ -67,18 +79,18 @@ useEffect(() => {
   
  
   const { ChartDatasurl, registrationUrl, Piechartdataurl } = useMemo(() => {
-    if (bootcampoption.value === undefined || startDate === undefined || endDate === undefined) {
+    if (bootcampoption.value === undefined || startDate === undefined || endDate === undefined || bootcampStatus.value === undefined) {
       return { ChartDatasurl: null, registrationUrl: null, Piechartdataurl: null };
     }
   
-    const chartDataUrl = `${process.env.REACT_APP_BACKEND_URL}/dashboard/chartData?id=${bootcampoption.value === 'all' ? 'all' : bootcampoption.value}&start_date=${dayjs(startDate).utc().format('YYYY-MM-DD')}&end_date=${dayjs(endDate).utc().format('YYYY-MM-DD')}`;
-    const registrationUrl = `${process.env.REACT_APP_BACKEND_URL}/dashboard/registration?id=${bootcampoption.value === 'all' ? 'all' : bootcampoption.value}&start_date=${dayjs(startDate).utc().format('YYYY-MM-DD')}&end_date=${dayjs(endDate).utc().format('YYYY-MM-DD')}`;
-    const Piechartdataurl = `${process.env.REACT_APP_BACKEND_URL}/dashboard/piechartdata?start_date=${dayjs(startDate).utc().format('YYYY-MM-DD')}&end_date=${dayjs(endDate).utc().format('YYYY-MM-DD')}`;
+    const chartDataUrl = `${process.env.REACT_APP_BACKEND_URL}/dashboard/chartData?status=${bootcampStatus.value}&id=${bootcampoption.value === 'all' ? 'all' : bootcampoption.value}&start_date=${dayjs(startDate).utc().format('YYYY-MM-DD')}&end_date=${dayjs(endDate).utc().format('YYYY-MM-DD')}`;
+    const registrationUrl = `${process.env.REACT_APP_BACKEND_URL}/dashboard/registration?status=${bootcampStatus.value}&id=${bootcampoption.value === 'all' ? 'all' : bootcampoption.value}&start_date=${dayjs(startDate).utc().format('YYYY-MM-DD')}&end_date=${dayjs(endDate).utc().format('YYYY-MM-DD')}`;
+    const Piechartdataurl = `${process.env.REACT_APP_BACKEND_URL}/dashboard/piechartdata?status=${bootcampStatus.value}&start_date=${dayjs(startDate).utc().format('YYYY-MM-DD')}&end_date=${dayjs(endDate).utc().format('YYYY-MM-DD')}`;
     
     return { ChartDatasurl: chartDataUrl, registrationUrl, Piechartdataurl };
-  }, [bootcampoption, startDate, endDate]);
+  }, [bootcampoption, startDate, endDate,bootcampStatus]);
   
-  console.log(ChartDatasurl)
+  
 
   const {data:registrationCount = [{tot:0}]} = useGet(registrationUrl);
   const {data:chart} = useGet(ChartDatasurl);
@@ -104,12 +116,14 @@ useEffect(() => {
   
   const handleEndDateChange = (date) => {
     if (date && dayjs(date).isValid() && dayjs(date).utc().isBefore(dayjs().utc().endOf('month'))) {
-      setEndDate(dayjs(date).utc().endOf('month').toDate());
+      setEndDate(dayjs(date).endOf('month').subtract(5.5, 'hours').toDate());
+      
       if (dayjs(date).utc().diff(dayjs(startDate).utc(), 'month') > 6) {
-        setStartDate(dayjs(date).utc().startOf('month').subtract(6, 'months').toDate());
+        setStartDate(dayjs(date).utc().startOf('month').subtract(6, 'months').subtract(5.5, 'hours').toDate());
       }
     } else {
       setEndDate(endDate);
+      
     }
   };
   
@@ -125,6 +139,15 @@ useEffect(() => {
         </div>
         <div className="h-screen p-4 bg-gray-200">
            <div className='flex space-x-4 w-full '>
+           <Select
+            className='w-64'
+            name='transactionStatus'
+            value={bootcampStatus}
+            options={statusBootcamp}
+            required
+            placeholder='Select Status'
+            onChange={selectedOption => setBootcampStatus(selectedOption)}
+          />
            <Select
             className='w-64'
             name='transactionStatus'
@@ -175,7 +198,8 @@ useEffect(() => {
            </div>
           <div className='w-full flex space-x-8'>
              
-           <div className='w-[60%] rounded-2xl m-4'>
+           <div className='w-[60%] rounded-2xl m-4 bg-white'>
+
           <MyChart data={chartData} />
           </div>
           <div className='flex flex-col space-y-8 mt-12 '>
@@ -209,7 +233,7 @@ useEffect(() => {
   </div>
 </div>
    <div className='bg-white w-full rounded-2xl shadow-xl '>
-  
+
     <MyPieChart data={piechartdata}/>
    </div>
 

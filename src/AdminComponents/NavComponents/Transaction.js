@@ -16,7 +16,7 @@ const Transaction = () => {
     { label: 'Refund', value: 'refund' },
   ];
 
-  const { data:bootcampData } = useGet(`${process.env.REACT_APP_BACKEND_URL}bootcamps/bootcamp?id=0`);
+  const { data:bootcampData } = useGet(`${process.env.REACT_APP_BACKEND_URL}/bootcamps/bootcamp?id=0`);
   const [currentStatus, setCurrentStatus] = useState(transactionStatusOptions[0]);
 
   const formattedOptions = useMemo(() => {
@@ -34,7 +34,7 @@ const Transaction = () => {
     setBootCampoption(formattedOptions[0]);
   }, [formattedOptions]);
 
-  
+  console.log(bootcampData)
   const memoizedUrl = useMemo(() => {
     return `${process.env.REACT_APP_BACKEND_URL}/transaction/${currentStatus.value}${currentStatus.value !== 'refund' ? `?bootcamp_id=${bootcampOption?.value || 'all'}` : ''}`;
   }, [currentStatus, bootcampOption]);

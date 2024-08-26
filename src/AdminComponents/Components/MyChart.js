@@ -30,6 +30,7 @@ const MyChart = ({ data = [] }) => {
       </ChartContainer>
     );
   }
+
   
 
   return (

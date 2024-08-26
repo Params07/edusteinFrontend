@@ -22,11 +22,10 @@ function ProgramContents() {
     },
     {
       title: "Mastery Craft",
-      src: "images/image7.png",
-      slogan:"Learn from the best to become your best",
+      src: "images/iamge7.png",
+      slogan:"Turn doubt into growth, flex your skills with advanced techniques",
 
-      content:
-        "Lorem ipsum dolor sit amet consectetur. Ut cursus ullamcorper fermentum vestibulum tellus tristique senectus. Leo mauris morbi maecenas morbi at quis morbi. Pretium ultricies tortor vulputate ",
+      content:"To become skilled and knowledgeable in a specific area, our platform offers self-learners the flexibility to learn at their own pace while mastering advanced techniques. Instead of committing to a full course, you can use MasterCraft to bridge the gap between your doubts and self-growth. Whether it's specialized tools, complex processes, or innovative methods, MasterCraft empowers you to stay updated on new developments, continuously refine your skills, and confidently experiment with new ideas."
     },
     {
       title: "Expert Talk",
